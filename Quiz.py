@@ -1,40 +1,38 @@
 import time
-questions = (("What is the largeest mammel on earth"),
-             ("what is the tallest building in the world"),
-             ("how many periodic elements are there"),
-             ("Which programing language is used mosed in the world"))
+#more simple and readable boss
+questions = [
+    "What is the largest mammal on earth?",
+    "What is the tallest building in the world?",
+    "How many periodic elements are there?",
+    "Which programming language is used most in the world?"
+]
 
-options = (("A. ELEPHANT", "B. GIRAAFE","C. WHALE","D. DOLPHIN"),
-          ("A. Burj khalifa", "B. Eifel tower","C. Twin towers","D. Statue of liberty"),
-          ("A. 120", "B. 69","C. 420","D. 118"),
-          ("A. Python", "B. Javascript","C. C++","D. C"))
+options = [
+    ["A. Elephant", "B. Giraffe", "C. Whale", "D. Dolphin"],
+    ["A. Burj Khalifa", "B. Eiffel Tower", "C. Twin Towers", "D. Statue of Liberty"],
+    ["A. 120", "B. 69", "C. 420", "D. 118"],
+    ["A. Python", "B. Javascript", "C. C++", "D. C"]
+]
 
-answers = ("C","A","D","B")
+answers = ["C", "A", "D", "B"]
 guesses = []
 score = 0
-question_num = 0
 
-for question in questions:
+for i, question in enumerate(questions):
     print("--------------------------------------------")
-    print(question, end=" ")
-    print()
-    for option in options[question_num]:
+    print(f"{i + 1}. {question}\n")
+    
+    for option in options[i]:
         print(option)
 
-    guess = input("TAKE A GUESS --- (A, B, C, D)-------------    ").upper()
+    guess = input("\nTAKE A GUESS --- (A, B, C, D): ").upper()
     guesses.append(guess)
-    if guess == answers[question_num]:
-        score =+ 1
+
+    if guess == answers[i]:
+        score += 1
         time.sleep(2)
-        print("CORRECT")
-    
+        print("CORRECT!\n")
     else:
-        print("u are.......")
+        print(f"INCORRECT. The correct answer is {answers[i]}.\n")
 
-        
-        time.sleep(2)
-        print("INCORRECT")
-        print(f"{answers[question_num]} is the corrent answer")
-     
-
-    question_num += 1
+print(f"You scored {score} out of {len(questions)}!")
